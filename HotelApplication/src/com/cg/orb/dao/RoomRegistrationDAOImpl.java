@@ -123,11 +123,10 @@ public class RoomRegistrationDAOImpl implements IRoomRegistrationDAO{
 				result = rs.getInt(1);
 			} 
 			
-		} catch (IOException e) {
+		} 
+		 catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			System.out.println("DAO layer ");
 			e.printStackTrace();
 		}
 		

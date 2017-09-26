@@ -21,7 +21,7 @@ public class Client {
 	static RoomRegistrationDTO details = null;		
 	static IHotelService service= new RoomRegistrationServiceImpl();
 	
-	public static void main(String[] args) throws IOException, SQLException, HotelApplicationException {
+	public static void main(String[] args) throws HotelApplicationException {
 		
 		System.out.println("Hotel Application");
 		System.out.println("_______________________");
@@ -30,6 +30,7 @@ public class Client {
 			System.out.println("1.Booking Room");
 			System.out.println("2.Exit");
 			System.out.println("Enter your choice");
+			
 			int choice = sc.nextInt();
 			
 			switch(choice)
@@ -41,20 +42,16 @@ public class Client {
 		}
 	}
 	
-	private static void registerRoom() throws HotelApplicationException, IOException
+	private static void registerRoom() throws HotelApplicationException
 	{
 		PropertyConfigurator.configure("log4j.properties");
 		Logger logger = Logger.getRootLogger();
 		
 		ArrayList <Integer> list =null;
-		try {
+		try{
 			list = service.getAllOwnerIds();
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			//e1.printStackTrace();
-			System.out.println("array error");
-		}
-		try {
+		
+		
 			System.out.println("Existing HotelOwner IDS Are:-"+list);
 			
 			System.out.println("Please enter your hotel owner id from above list:");
@@ -107,10 +104,11 @@ public class Client {
 		//throw new HotelApplicationException("The Exception Occured!!");
 		System.out.println(e);
 		//h.printStackTrace();
-	} catch (SQLException e) {
+	} catch (Exception e) {
 		// TODO Auto-generated catch block
 		//e.printStackTrace();
 		System.out.println("Input mismatch");
+		sc.next();
 	}
 		
 	}
